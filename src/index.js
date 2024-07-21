@@ -13,6 +13,7 @@ import { registerBlockType } from '@wordpress/blocks';
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './style.scss';
+import icons from './icons';
 
 /**
  * Internal dependencies
@@ -27,6 +28,7 @@ import metadata from './block.json';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType( metadata.name, {
+	icon: icons.default,
 	/**
 	 * @see ./edit.js
 	 */
@@ -36,4 +38,15 @@ registerBlockType( metadata.name, {
 	 * @see ./save.js
 	 */
 	save,
+	variations: [
+		{
+			name: "v-plus/alert-box-accented",
+			title: "Alert Box Accented",
+			icon: icons.accented,
+			attributes: {
+				textColor : "#111827",
+				className : "is-styled-accented"
+			}
+		}
+	]
 } );

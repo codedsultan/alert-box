@@ -6,7 +6,6 @@ import {
 	PanelColorSettings,
 } from "@wordpress/block-editor";
 import { Icon, PanelBody, TextControl } from "@wordpress/components";
-import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
 	const { content, icon, bgColor, textColor } = attributes;

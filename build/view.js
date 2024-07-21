@@ -1,1 +1,0 @@
-console.log("Hello World! (from v-plus-alert-box block)");

@@ -5,15 +5,31 @@
   "version": "0.1.0",
   "title": "Alert Box",
   "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
-  "example": {},
-  "supports": {
-    "html": false
+  "description": "Adds an alert box to output important information to the reader.",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": ".alert-box-content p"
+    },
+    "icon": {
+      "type": "string",
+      "default": "admin-site"
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#4F46E5"
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#fff"
+    }
   },
   "textdomain": "alert-box",
   "editorScript": "file:./index.js",
-  "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "supports": {
+    "html": false,
+    "align": true
+  }
 }
