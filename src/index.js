@@ -50,5 +50,5 @@ registerBlockType( metadata.name, {
 			}
 		}
 	],
-	deprecated: [v1],
+	deprecated: [v1], // handle deprecations changes of p tag to div tag
 } );

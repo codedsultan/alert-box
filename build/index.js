@@ -328,7 +328,7 @@ __webpack_require__.r(__webpack_exports__);
       className: "is-styled-accented"
     }
   }],
-  deprecated: [_v1__WEBPACK_IMPORTED_MODULE_3__["default"]]
+  deprecated: [_v1__WEBPACK_IMPORTED_MODULE_3__["default"]] // handle deprecations changes of p tag to div tag
 });
 
 /***/ }),
