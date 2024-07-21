@@ -1,8 +1,22 @@
+import blockData from "./block.json"
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 
-export default function save({ attributes }) {
+export default {
+ supports: {
+	...blockData.supports
+ },
+
+ attributes: {
+	...blockData.attributes,
+	content:{
+		type: "string",
+		source: "html",
+		selector: ".alert-box-content p"
+	},
+ },
+ save({ attributes }) {
 	const { content, icon, bgColor, textColor } = attributes
 	const blockProps = useBlockProps.save({
 		style: {
@@ -18,8 +32,10 @@ export default function save({ attributes }) {
 				icon={icon}
 			/>
 			<div class="alert-box-content">
-				<RichText.Content tagName="div" value={content} />
+				<RichText.Content tagName="p" value={content} />
 			</div>
 		</div>
 	)
+ }
+
 }

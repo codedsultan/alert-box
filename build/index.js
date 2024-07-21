@@ -71,7 +71,7 @@ function Edit({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     class: "alert-box-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
-    tagName: "p",
+    tagName: "div",
     value: content,
     onChange: content => setAttributes({
       content
@@ -275,9 +275,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./icons */ "./src/icons.js");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
+/* harmony import */ var _v1__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./v1 */ "./src/v1.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -295,6 +296,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /**
  * Internal dependencies
  */
@@ -307,16 +309,16 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_6__.name, {
   icon: _icons__WEBPACK_IMPORTED_MODULE_2__["default"]["default"],
   /**
    * @see ./edit.js
    */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
   /**
    * @see ./save.js
    */
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_5__["default"],
   variations: [{
     name: "v-plus/alert-box-accented",
     title: "Alert Box Accented",
@@ -325,7 +327,8 @@ __webpack_require__.r(__webpack_exports__);
       textColor: "#111827",
       className: "is-styled-accented"
     }
-  }]
+  }],
+  deprecated: [_v1__WEBPACK_IMPORTED_MODULE_3__["default"]]
 });
 
 /***/ }),
@@ -375,10 +378,77 @@ function save({
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     class: "alert-box-content"
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
-    tagName: "p",
+    tagName: "div",
     value: content
   })));
 }
+
+/***/ }),
+
+/***/ "./src/v1.js":
+/*!*******************!*\
+  !*** ./src/v1.js ***!
+  \*******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./block.json */ "./src/block.json");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  supports: {
+    ..._block_json__WEBPACK_IMPORTED_MODULE_1__.supports
+  },
+  attributes: {
+    ..._block_json__WEBPACK_IMPORTED_MODULE_1__.attributes,
+    content: {
+      type: "string",
+      source: "html",
+      selector: ".alert-box-content p"
+    }
+  },
+  save({
+    attributes
+  }) {
+    const {
+      content,
+      icon,
+      bgColor,
+      textColor
+    } = attributes;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save({
+      style: {
+        'border-color': bgColor,
+        'background-color': bgColor,
+        color: textColor
+      }
+    });
+    return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      ...blockProps
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Icon, {
+      icon: icon
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      class: "alert-box-content"
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.RichText.Content, {
+      tagName: "p",
+      value: content
+    })));
+  }
+});
 
 /***/ }),
 
@@ -450,7 +520,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"v-plus/alert-box","version":"0.1.0","title":"Alert Box","category":"widgets","description":"Adds an alert box to output important information to the reader.","attributes":{"content":{"type":"string","source":"html","selector":".alert-box-content p"},"icon":{"type":"string","default":"admin-site"},"bgColor":{"type":"string","default":"#4F46E5"},"textColor":{"type":"string","default":"#fff"}},"textdomain":"alert-box","editorScript":"file:./index.js","style":"file:./style-index.css","supports":{"html":false,"align":true},"styles":[{"name":"regular","label":"Regular","isDefault":true},{"name":"accented","label":"Accented"}]}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"v-plus/alert-box","version":"0.1.0","title":"Alert Box","category":"widgets","description":"Adds an alert box to output important information to the reader.","attributes":{"content":{"type":"string","source":"html","selector":".alert-box-content div"},"icon":{"type":"string","default":"admin-site"},"bgColor":{"type":"string","default":"#4F46E5"},"textColor":{"type":"string","default":"#fff"}},"textdomain":"alert-box","editorScript":"file:./index.js","style":"file:./style-index.css","supports":{"html":false,"align":true},"styles":[{"name":"regular","label":"Regular","isDefault":true},{"name":"accented","label":"Accented"}]}');
 
 /***/ })
 

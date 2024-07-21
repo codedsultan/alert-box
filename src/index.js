@@ -14,6 +14,7 @@ import { registerBlockType } from '@wordpress/blocks';
  */
 import './style.scss';
 import icons from './icons';
+import v1 from './v1'
 
 /**
  * Internal dependencies
@@ -48,5 +49,6 @@ registerBlockType( metadata.name, {
 				className : "is-styled-accented"
 			}
 		}
-	]
+	],
+	deprecated: [v1],
 } );
